@@ -3,6 +3,7 @@ from sqlalchemy import Boolean
 from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
+from sqlalchemy.orm import relationship
 
 
 class User(Base):
@@ -11,3 +12,4 @@ class User(Base):
     password = Column(String, nullable=False)
     is_superuser = Column(Boolean(), default=False)
     is_active = Column(Boolean(), default=True)
+    blogs = relationship("Blog",back_populates="author")
