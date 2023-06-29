@@ -6,7 +6,7 @@ from datetime import date
 
 class CreateBlog(BaseModel):
     title: str 
-    slug: str 
+    slug: str
     content: Optional[str] = None 
     
     @validator('slug', pre=True)
@@ -17,6 +17,9 @@ class CreateBlog(BaseModel):
             slug = title.replace(" ","-").lower()
         return slug
         
+
+class UpdateBlog(CreateBlog):
+    pass
 
 
 class ShowBlog(BaseModel):
