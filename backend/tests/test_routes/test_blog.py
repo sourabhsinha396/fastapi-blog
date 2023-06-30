@@ -7,4 +7,3 @@ def test_should_fetch_blog_created(client, db_session):
     response = client.get(f"blog/{blog.id}/")
     assert response.status_code == 200
     assert response.json()["title"] == blog.title
-
