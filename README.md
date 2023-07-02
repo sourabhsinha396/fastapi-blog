@@ -5,7 +5,7 @@ A real world blog built with fastapi
 
 ## Technology Stack:
 * FastAPI
-* Uvicorn 
+* Uvicorn
 * Pytest
 * Sqlalchemy
 * Postgres
@@ -33,10 +33,10 @@ Features:
  -   Password Hashing
  -   Unit Testing (What makes an app stable)
  -   Authentication login/create user/get token
- -   Authorization/Permissions 
+ -   Authorization/Permissions
 
  --------------------------------- Intermediate Stuffs --------------------------------
- -  Caching 
+ -  Caching
  -  Deployment on Linux Server
  -  Webapp (Monolithic)
 
