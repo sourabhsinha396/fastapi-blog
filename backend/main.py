@@ -1,4 +1,5 @@
 from apis.base import api_router
+from apps.base import app_router
 from core.config import settings
 from db.base import Base
 from db.session import engine
@@ -11,6 +12,7 @@ def create_tables():
 
 def include_router(app):
     app.include_router(api_router)
+    app.include_router(app_router)
 
 
 def start_application():
@@ -21,8 +23,3 @@ def start_application():
 
 
 app = start_application()
-
-
-@app.get("/")
-def home():
-    return {"msg": "Hello FastAPI🚀"}
