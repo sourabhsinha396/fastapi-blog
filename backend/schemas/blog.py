@@ -12,7 +12,7 @@ class CreateBlog(BaseModel):
 
     @root_validator(pre=True)
     def generate_slug(cls, values):
-        if "title" in values and "slug" not in values:
+        if "title" in values:
             values["slug"] = values.get("title").replace(" ", "-").lower()
         return values
 
