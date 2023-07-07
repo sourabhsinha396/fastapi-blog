@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title>Write a Blog</title>
+{% endblock %}
+
+
+{% block content %}
+
+{% for error in errors %}
+<div class="alert alert-danger">
+    <li>{{error}}</li>
+</div>
+{% endfor %}
+
+<div class="container">
+    <div class="text-center display-4">Write a Blog</div>
+    <div class="row mt-3 mb-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form method="POST">
+                <label>Title</label>
+                <input type="text" required  class="form-control mb-2" name="title" value="{{title}}" placeholder="Enter a Title">
+
+                <label>Content</label>
+                <textarea name="content" class="form-control mb-2">{{content}}</textarea>
+
+                <button type="submit" class="btn btn-outline-success">Submit for Review</button>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+{% endblock %}
