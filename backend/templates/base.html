@@ -9,6 +9,9 @@
   </head>
   <body>
     {% include "components/navbar.html" %}
+    {% with alert=alert %}
+      {% include "components/alert.html" %}
+    {% endwith %}
     {% block content %}
     {% endblock %}
 
