@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+
+{% block content %}
+
+{% for error in errors %}
+<div class="alert alert-danger">
+    <li>{{error}}</li>
+</div>
+{% endfor %}
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form method="POST">
+                <label>Email</label>
+                <input type="email" required  class="form-control mb-2" name="email" value="{{email}}" placeholder="Enter your email">
+
+                <label>Password</label>
+                <input type="password" required placeholder="Enter your password" value="{{password}}" name="password" class="form-control mb-2">
+
+                <button type="submit" class="btn btn-outline-success">Login</button>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+{% endblock %}

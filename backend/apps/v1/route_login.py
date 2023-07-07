@@ -1,5 +1,7 @@
 import json
 
+from apis.v1.route_login import authenticate_user
+from core.security import create_access_token
 from db.repository.user import create_new_user
 from db.session import get_db
 from fastapi import APIRouter
@@ -12,6 +14,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic.error_wrappers import ValidationError
 from schemas.user import UserCreate
 from sqlalchemy.orm import Session
+
 
 templates = Jinja2Templates(directory="templates")
 router = APIRouter()
@@ -43,3 +46,32 @@ def register(
         return templates.TemplateResponse(
             "auth/register.html", {"request": request, "errors": errors}
         )
+
+
+@router.get("/login")
+def login(request: Request):
+    return templates.TemplateResponse("auth/login.html", {"request": request})
+
+
+@router.post("/login")
+def login(
+    request: Request,
+    email: str = Form(...),
+    password: str = Form(...),
+    db: Session = Depends(get_db),
+):
+    errors = []
+    user = authenticate_user(email=email, password=password, db=db)
+    if not user:
+        errors.append("Incorrect email or password")
+        return templates.TemplateResponse(
+            "auth/login.html", {"request": request, "errors": errors}
+        )
+    access_token = create_access_token(data={"sub": email})
+    response = responses.RedirectResponse(
+        "/?alert=Successfully Logged In", status_code=status.HTTP_302_FOUND
+    )
+    response.set_cookie(
+        key="access_token", value=f"Bearer {access_token}", httponly=True
+    )
+    return response
