@@ -8,12 +8,12 @@
 
 {% block content %}
 <div class="container">
-    <h2 class="text-muted">All Blogs</h1>
-    <div class="row justify-content-center">
+    <!-- <h2 class="text-muted">All Blogs</h1> -->
+    <div class="row justify-content-center my-5">
 
         {% for blog in blogs %}
         <div class="col-sm-4 mb-4">
-          <div class="card">
+          <div class="card shadow-lg">
             <div class="card-header">
                 <h5 class="card-text">{{ blog.title }}</h5>
             </div>
@@ -21,7 +21,7 @@
               <p class="card-text">First Published : {{blog.created_at.strftime('%Y-%m-%d')}}</p>
               <small class="card-text text-muted">Content : {{blog.content[:60]}}...</small>
               <br>
-              <a href="/app/blog/{{blog.id}}" class="btn btn-outline-success">Read more</a>
+              <a href="/app/blog/{{blog.id}}" class="btn btn-primary my-2">Read more</a>
             </div>
           </div>
         </div>

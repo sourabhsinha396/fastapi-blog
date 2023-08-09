@@ -43,4 +43,4 @@ def delete_blog(id: int, author_id: int, db: Session):
         return {"error": "Only the author can delete a blog"}
     blog_in_db.delete()
     db.commit()
-    return {"msg": f"deleted blog with id {id}"}
+    return {"msg": f"Deleted blog with id {id}"}
